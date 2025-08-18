@@ -78,6 +78,11 @@ p {
     line-height: 14px;
 }
 
+.sign {
+    text-align: end;
+    padding-right: 2px;
+}
+
 a:link {
     font-family: MONO, sans-serif;
     font-size: 12px;
