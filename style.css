@@ -44,6 +44,15 @@ body {
     background-color: var(--white-burnt);
 }
 
+/* Hide the page scrollbar only; wheel, trackpad, touch and keyboard scrolling still work. */
+html {
+    scrollbar-width: none; /* Firefox, Chromium 121+, Safari 18.2+ */
+}
+
+html::-webkit-scrollbar {
+    display: none; /* Older Safari and Chromium */
+}
+
 article {
     width: 100%;
 }
@@ -128,6 +137,16 @@ a:visited {
     position: sticky;
     top: 60px;
     /* z-index: 10; */
+}
+
+@keyframes top-scroll-progress {
+    /* End with .top's bottom 20px above the header's bottom border, as at the top.
+       Viewport height - sticky top (60px) - footer and body padding below the
+       container (44px) - header border (1.4px) - inset (20px) - own height.
+       Recalibrate if the sticky top, footer, body padding or header border changes. */
+    to {
+        translate: 0 calc(100vh - 60px - 44px - 1.4px - 20px - 100%);
+    }
 }
 
 .ID {
@@ -265,6 +284,14 @@ footer p {
         margin-right: 0;
         min-width: 0;
         flex: 0 0 var(--left-column);
+    }
+
+    /* Scroll indicator; unsupported browsers keep the plain sticky header. */
+    @supports (animation-timeline: scroll()) {
+        .top {
+            animation: top-scroll-progress linear both;
+            animation-timeline: scroll(root block);
+        }
     }
 
     .timeline {
