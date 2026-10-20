@@ -1,1 +1,16 @@
+# Ignore everything unless explicitly allowed below.
+*
+
+# Site source and hosting files.
+!/.gitignore
+!/index.html
+!/style.css
+!/robots.txt
+!/CNAME
+
+# Preserve the asset directory and its contents, including subdirectories.
+!/assets/
+!/assets/**
+
+# Finder metadata is never site content, even inside assets.
 .DS_Store
