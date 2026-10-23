@@ -211,6 +211,12 @@ a:visited {
     font-weight: 800;
 }
 
+/* Larger card title, for a project name on its own line. */
+.bullet-large {
+    font-size: var(--h3);
+    line-height: 18px;
+}
+
 .post-description {
     gap: 5px;
     padding: 5px;
