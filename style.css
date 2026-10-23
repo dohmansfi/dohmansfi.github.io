@@ -231,6 +231,36 @@ a:visited {
     position: relative;
 }
 
+/* Frame split into media (4/7) and text (3/7), stacked on phones.
+   The 22px media inset (the .post-footer height) is the terminal's gap to the
+   frame edges. The summary keeps fixed insets from the frame edges, like the
+   buttons: 22px top, 20px right (the .btn-open right offset, so the text and
+   the button row share a right edge) and 60px bottom (15px button offset +
+   23px button box + a 22px gap). Recalibrate if the buttons move. */
+.frame-split {
+    display: flex;
+    padding: 0;
+}
+
+.split-media {
+    flex: 0 0 calc(100% * 4 / 7);
+    padding: 22px;
+    display: flex;
+    align-items: center; /* centres the terminal when the summary is taller */
+    justify-content: center;
+}
+
+.split-media img {
+    display: block;
+    height: auto;
+}
+
+.split-text {
+    flex: 1;
+    min-width: 0;
+    padding: 22px 20px 60px 0;
+}
+
 .post-footer {
     display: flex;
     flex-flow: row-reverse;
@@ -375,5 +405,13 @@ footer p {
 @media (max-width: 700px) {
     .post {
         width: 100%;
+    }
+
+    .frame-split {
+        flex-direction: column;
+    }
+
+    .split-text {
+        padding: 0 20px 60px 22px;
     }
 }
